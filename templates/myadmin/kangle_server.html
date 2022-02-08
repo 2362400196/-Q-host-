@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+  {% load staticfiles %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>kangle服务器添加</title>
+  <link rel="icon" href="favicon.ico" type="image/ico">
+  <meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
+  <meta name="description" content="Light Year Admin V4是一个后台管理系统的HTML模板，基于Bootstrap v4.4.1。">
+  <meta name="author" content="yinqi">
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="../static/css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  <link href="http://lyear.itshubao.com/v4/css/style.min.csscss/bootstrap.min.css" rel="stylesheet">
+  <link href="http://lyear.itshubao.com/v4/css/style.min.csscss/materialdesignicons.min.css" rel="stylesheet">
+  <link href="http://lyear.itshubao.com/v4/css/style.min.csscss/animate.css" rel="stylesheet">
+  <link href="http://lyear.itshubao.com/v4/css/style.min.csscss/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.min.css">
+</head>
+<body>
+  <script src="https://cdn.staticfile.org/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+
+      $("#btn4").click(function () {
+        var server_type = $("#server_type").val();
+        var server_ip = $("#server_ip").val();
+        var server_name = $("#server_name").val();
+        var server_pwd = $("#server_pwd").val();
+        var server_key = $("#server_key").val();
+        var end_time = $("#end_time").val();
+        // 此参数需要传递给后端,否则会csrf禁止,报403错误
+        var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+        // 发起ajax请求
+        $.ajax({
+          url: "/admin/kangle_server_logic",  // 请求的地址
+          type: "post",  // 请求方式
+          // 请求时传递过去的数据
+          data: {
+
+            "server_type": server_type,
+            "server_ip": server_ip,
+            "server_name": server_name,
+            "server_pwd": server_pwd,
+            "server_key": server_key,
+            "end_time": end_time,
+            'csrfmiddlewaretoken': csrf
+          },
+          dataType: "json",  // 返回的数据格式
+          async: true,  // 异步的ajax
+        }).success(function (data) {
+          if (data.res == 1) {
+            // 请求成功实现页面跳转
+            lightyear.notify('服务器配置成功，页面即将自动跳转~', 'success', 5000, 'mdi mdi-emoticon-happy', 'top', 'center');
+           
+            function jump(){
+                window.location.href='/admin/kangle';
+            }
+            setTimeout(jump,3000);
+
+
+          }
+          else if (data.res == 0) {
+
+            // 请求失败，显示错误信息
+            lightyear.notify('参数不全，务必请全部填写完~', 'danger', 5000);
+          }
+
+        })
+      })
+    })
+
+  </script>
+  </head>
+
+  <body>
+    {# post请求必须加上下面这个变量 #}
+    {% csrf_token %}
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">kangle服务器配置</div>
+        </div>
+        <div class="card-body">
+          <form>
+
+            <div class="form-group">
+              <label for="formGroupExampleInput2">服务器名称</label>
+              <input type="text" class="form-control" id="server_type" placeholder="服务器名称">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">ip地址</label>
+              <input type="text" class="form-control" id="server_ip" placeholder="ip地址">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">登录账号</label>
+              <input type="text" class="form-control" id="server_name" placeholder="登录账号">
+            </div>
+
+            <div class="form-group">
+              <label for="server_pwd">登录密码</label>
+              <input type="text" class="form-control" id="server_pwd" placeholder="请输入密码">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">服务器安全码</label>
+              <input type="text" class="form-control" id="server_key" placeholder="服务器安全码">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">截止日期</label>
+              <input type="text" class="form-control" id="end_time" placeholder="截止日期">
+            </div>
+            <button type="button" id="btn4" type="submit" class="btn btn-primary">添加</button>
+          </form>
+        </div>
+    
+  </div>
+</div>
+</div>
+  
+      
+
+      <!--消息提示-->
+      <script src="http://lyear.itshubao.com/js/bootstrap-notify.min.js"></script>
+      <script type="text/javascript" src="http://lyear.itshubao.com/js/lightyear.js"></script>
+      <script type="text/javascript" src="http://lyear.itshubao.com/js/main.min.js"></script>
+
+
+</html>

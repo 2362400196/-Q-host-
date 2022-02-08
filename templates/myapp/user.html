@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	{% load staticfiles %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>首页</title>
+<link rel="icon" href="favicon.ico" type="image/ico">
+<meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
+<meta name="description" content="Light Year Admin V4是一个后台管理系统的HTML模板，基于Bootstrap v4.4.1。">
+<meta name="author" content="yinqi">
+<link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/iframe/v4/css/materialdesignicons.min.css">
+<link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/iframe/v4/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/iframe/v4/js/bootstrap-multitabs/multitabs.min.css">
+<link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/iframe/v4/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/iframe/v4/css/style.min.css">
+</head>
+  
+<body>
+  <div class="container-fluid p-t-15">
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header"><h4>Q-Host - 虚拟主机管理系统</h4></div>
+          <div class="card-body">
+            
+            <p>全新的UI，全新的设计，只为更好的体验，我们永远专一，O(∩_∩)O。<span class="text-danger">目前这些布局是基于bootstrap 3.3.7。</span></p>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  <!--第二种布局的统计-->
+  <div class="row">
+  	<div class="col-sm-6 col-md-3">
+  	  <div class="card">
+  	    <div class="card-body">
+  	      <div class="clearfix">
+  	        <div class="pull-left">
+  	          <h5><b>今日支出</b></h5>
+  	          <p class="text-muted">消费力</p>
+  	        </div>
+  	        <h3 class="text-info pull-right">$170</h3>
+  	      </div>
+  	      <div class="progress progress-sm">
+  	        <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  	      </div>
+  	      <div class="clearfix">
+  	        <p class="text-muted pull-left m-b-0">上涨</p>
+  	        <p class="text-muted pull-right m-b-0">75%</p>
+  	      </div>
+  	    </div>
+  	  </div>
+  	</div>
+  	<div class="col-sm-6 col-md-3">
+  	  <div class="card">
+  	    <div class="card-body">
+  	      <div class="clearfix">
+  	        <div class="pull-left">
+  	          <h5><b>总支出</b></h5>
+  	          <p class="text-muted">总消费</p>
+  	        </div>
+  	        <h3 class="text-success pull-right">$120</h3>
+  	      </div>
+  	      <div class="progress progress-sm">
+  	      	<div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  	      </div>
+  	      <div class="clearfix">
+  	        <p class="text-muted pull-left m-b-0">上涨</p>
+  	        <p class="text-muted pull-right m-b-0">25%</p>
+  	      </div>
+  	    </div>
+  	  </div>
+  	</div>
+  	<div class="col-sm-6 col-md-3">
+  	  <div class="card">
+  	    <div class="card-body">
+  	      <div class="clearfix">
+  	        <div class="pull-left">
+  	          <h5><b>产品数</b></h5>
+  	          <p class="text-muted">购买力</p>
+  	        </div>
+  	        <h3 class="text-danger pull-right">15</h3>
+  	      </div>
+  	      <div class="progress progress-sm">
+  	        <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  	      </div>
+  	      <div class="clearfix">
+  	        <p class="text-muted pull-left m-b-0">上涨</p>
+  	        <p class="text-muted pull-right m-b-0">50%</p>
+  	      </div>
+  	    </div>
+  	  </div>
+  	</div>
+  	<div class="col-sm-6 col-md-3">
+  	  <div class="card">
+  	    <div class="card-body">
+  	      <div class="clearfix">
+  	        <div class="pull-left">
+  	          <h5><b>余额</b></h5>
+  	          <p class="text-muted">余额剩余</p>
+  	        </div>
+  	        <h3 class="text-primary pull-right">{{ money.0 }}</h3>
+  	      </div>
+  	      <div class="progress progress-sm">
+  	        <div class="progress-bar bg-primary w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  	      </div>
+  	      <div class="clearfix">
+  	        <p class="text-muted pull-left m-b-0">上涨</p>
+  	        <p class="text-muted pull-right m-b-0">25%</p>
+  	      </div>
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  
+  <div class="row">
+    
+    <div class="col-md-6"> 
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">已开通产品</div>
+        </div>
+        <div class="card-body">
+          <canvas class="js-chartjs-bars"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6"> 
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">公告通知</div>
+          
+        </div>
+        <div class="card-body">
+          
+          <canvas class="js-chartjs-bars"></canvas>
+
+        </div>
+      </div>
+    </div>
+     
+  </div>
+  
+  
+</body>
+</html>

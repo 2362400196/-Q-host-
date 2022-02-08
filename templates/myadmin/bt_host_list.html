@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>bthost服务器</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+    <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+    <meta name="author" content="yinqi">
+    <link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/v4/css/materialdesignicons.min.css">
+    <link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/v4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/v4/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/v4/js/jquery-confirm/jquery-confirm.min.css">
+    <link rel="stylesheet" type="text/css" href="http://lyear.itshubao.com/v4/css/style.min.css">
+</head>
+{% load staticfiles %}
+<body>
+
+
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <header class="card-header">
+                    <div class="card-title">bthost服务器</div>
+                </header>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>IP地址</th>
+                                    <th>服务器名称</th>
+                                    <th>创建日期</th>
+                                    <th>状态</th>
+                                    <th>管理</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                {% for stu in stulist %}
+                                <tr>
+                                    <td>{{ stu.id }}</td>
+                                    <td>{{ stu.ip }}</td>
+                                    <td>{{ stu.name }}</td>
+                                    
+                                   
+                                    <td>{{ stu.addtime|date:'Y-m-d H:i:s' }}</td>
+                                    <td>{{ stu.state }}</td>
+                                    
+
+                                    <td><a href='http://23.224.81.243/nHvDqdxZEy.php/index/index'
+                                            type="submit" class="btn btn-info" id="example-four" data-toggle="tooltip"
+                                            data-placement="top" title="登陆你的后台">登陆</a>
+                                       
+                                          <a class="btn btn-xs btn-default btn btn-danger ajax-get confirm" href="/admin/delbthost/{{ stu.id }}" title="" data-toggle="tooltip" data-original-title="删除">
+                                            <i class="mdi ">删除</i>
+                                          </a>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+
+
+
+
+
+</div>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/popper.min.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/lyear-loading.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/jquery-confirm/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="http://lyear.itshubao.com/v4/js/main.min.js"></script>
+<script type="text/javascript">
+    
+    </script>
+    </body>
+    </html>
